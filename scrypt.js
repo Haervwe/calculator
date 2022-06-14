@@ -104,7 +104,7 @@ function calculate (expresion) {
         }
     }
 
-//hecks the array for parenthesis and use recursion to solve the inner parts of the expression given
+//checks the array for parenthesis and use recursion to solve the inner parts of the expression given
 
     let counter = 0;
     let check = 0;
@@ -223,16 +223,36 @@ function updateDisplayOperator (a){
 function updateDisplayeQual(){ 
     result = calculate(input.innerText)
     if (result.length == 1){
-        output.innerText = result[0];
+        if (result[0]==NaN||(typeof(result[0])=="string")){
+            output.innerText = "Syntax Error!";
+            input.innerText =  "";
+            lastInput="number"
+        } else {
+            console.log(typeof(result[0]));
+            output.innerText = result[0];
+            input.innerText =  "";
+            lastInput="number";  
+        }
+        
+    } else {
+        output.innerText = "Syntax Error!";
         input.innerText =  "";
-        lastInput="number";
+        lastInput="number"
     }
     
 }
 
+function updateDisplayClear(){
 
+    input.innerText = "";
+    output.innerText = "0";
+}
 
-console.log(calculate("               10 + 1         "));
+function updateDisplaybkspace(){
+    
+    input.innerText = input.innerText.slice(0,-2);
+    
+}
 
 
 
