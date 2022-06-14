@@ -45,7 +45,8 @@ function sqrt (a){
 
 
 
-//function that takes a string and caculates a result, inputs must have a space between//
+//function that takes a string and caculates a result, inputs must have a space between 
+//acomplished by giving operation inputs the structure " "operator" " .
 
 function calculate (expresion) {
     let result = 0;
@@ -64,27 +65,28 @@ function calculate (expresion) {
             separated.splice(i-1,3, power(separated[i-1],separated[i+1]));
         }
     }
-
-    
-
     for(let i=0; i<separated.length;i++){
         
         if (separated[i]=="x"){
             separated.splice(i-1,3, multiply(separated[i-1],separated[i+1]));
         }
     }
-
     for(let i=0; i<separated.length;i++){
         
         if (separated[i]=="/"){
             separated.splice(i-1,3, divide(separated[i-1],separated[i+1]));
         }
     }
-
     for(let i=0; i<separated.length;i++){
         console.log(separated[i]);
         if (separated[i]=="+"){
             separated.splice(i-1,3, add(separated[i-1],separated[i+1]));
+        }
+    }
+    for(let i=0; i<separated.length;i++){
+        console.log(separated[i]);
+        if (separated[i]=="-"){
+            separated.splice(i-1,3, substract(separated[i-1],separated[i+1]));
         }
     }
     return separated;
