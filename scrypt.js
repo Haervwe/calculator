@@ -50,16 +50,36 @@ function sqrt (a){
 //recursive parentesis implementation.
 
 function calculate (expresion) {
+
     
+
     let separated = [];
     if (typeof(expresion)== "string"){
         separated = expresion.split(" ");
     } else {
         separated = expresion;
     }
+    
+    if (separated[0]=="-"&&typeof(separated[1]=="number")){
+        separated.shift();
+        separated[0]=separated[0]*-1;
+        console.log(separated[0]);
+    }
+    for(let i=1; i<separated.length;i++){
+        if  ((separated[i]=="-"&&!(typeof(separated[i-1])=="number"))&&typeof(separated[i+1]=="number")&&(separated[i+1]!="+")){
+            console.log(separated);
+            console.log(i);
+            separated.splice(i,1);
+            console.log(separated);
+            separated[i]=separated[i]*-1;
+            console.log(separated[i]);
+            console.log(separated);
+        }
+    }
+
     let counter = 0;
     let check = 0;
-    loop:for(let i=0; i<separated.length;i++){
+    for(let i=0; i<separated.length;i++){
         if (separated[i]=="("){
             let init = i;
             check = 1;
@@ -75,12 +95,8 @@ function calculate (expresion) {
                     const temp = separated;
                     const toCalc = separated.splice(init,fin);
                     toCalc.shift();
-                    console.log(toCalc);
-                    console.log(temp);
                     temp.splice(init,1,calculate(toCalc));
-                    console.log(temp[init]);
                     temp[init]=temp[init][0]
-                    console.log(temp);
                     separated  = temp;
                     break;
                     
@@ -92,15 +108,15 @@ function calculate (expresion) {
     for (let i = 0 ; i<separated.length;i++){
         if (separated[i]=="("){
             check = 1;
-            console.log(check);
         }
         else{
             check = 0 ;
         }
     }
     
+    
+
     if (!check){
-        console.log(separated);
         for(let i=0; i<separated.length;i++){
             if (separated[i]=="s"){
                 separated.splice(i,2, sqrt(separated[i+1]));
@@ -133,10 +149,12 @@ function calculate (expresion) {
         }
         
     }
+    console.log(separated);
     return separated;
+    
 }
 
-console.log(calculate("10 x ( 10 + 5 ) / s ( 4 ^ 2 )"));
+console.log(calculate("- 10 x ( - 10 + - 5 - 1 ) / s ( 4 ^ 2 )"));
 
 
 
