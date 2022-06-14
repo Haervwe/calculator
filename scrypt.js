@@ -51,8 +51,7 @@ function sqrt (a){
 
 function calculate (expresion) {
 
-    
-
+ //here it checks if the input needs conversion since its a recursive function it only does it once.
     let separated = [];
     if (typeof(expresion)== "string"){
         separated = expresion.split(" ");
@@ -60,6 +59,8 @@ function calculate (expresion) {
         separated = expresion;
     }
     
+//checks for "-" simbols in the array and its meaning (negative number or substraction)
+
     if (separated[0]=="-"&&typeof(separated[1]=="number")){
         separated.shift();
         separated[0]=separated[0]*-1;
@@ -76,6 +77,8 @@ function calculate (expresion) {
             console.log(separated);
         }
     }
+
+//function that checks the array for parenthesis and use recursion to solve the inner parts of the expression given
 
     let counter = 0;
     let check = 0;
@@ -105,6 +108,8 @@ function calculate (expresion) {
         }
     }
 
+    // check if the expresion array is ready to do mathematichal operations
+
     for (let i = 0 ; i<separated.length;i++){
         if (separated[i]=="("){
             check = 1;
@@ -114,7 +119,7 @@ function calculate (expresion) {
         }
     }
     
-    
+    // operates in the expresion
 
     if (!check){
         for(let i=0; i<separated.length;i++){
