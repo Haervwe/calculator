@@ -256,9 +256,9 @@ function updateDisplaybkspace(){
 
 function updateDisplayLasResult(){
     if (lastInput == "number"){
-        
+
     } else {
-        input.innerText=input.innerText + output.innerText;
+        input.innerText=input.innerText + " " + output.innerText;
         lastInput="number";
     }
     
