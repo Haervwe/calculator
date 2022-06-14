@@ -40,8 +40,8 @@
                     </div>
                     <div class="row fourth">
                         <button class="number dot" onclick="updateDisplayNumber (`.`)">.</button>
-                        <button class="number zero"onclick="updateDisplayNumber (`0`)">0</button>
-                        <button class="number res">R</button>
+                        <button class="number zero" onclick="updateDisplayNumber (`0`)">0</button>
+                        <button class="number lastResult" onclick="updateDisplayLasResult()">R</button>
                     </div>
                     <div class="row deletes">
                         <button class="delete clear" onclick="updateDisplayClear()">Clear</button>
@@ -61,8 +61,8 @@
                     <button class="operator sin" onclick="updateDisplayOperator (` sin `)">Sin</button>
                     <button class="operator cos" onclick="updateDisplayOperator (` cos `)">Cos</button>
                     <button class="operator tan" onclick="updateDisplayOperator (` tan `)">Tan</button>
-                    <button class="operator openpare" >(</button>
-                    <button class="operator closepare">)</button>
+                    <button class="operator openpare" onclick="updateDisplayOpenParenthesis()">(</button>
+                    <button class="operator closepare"onclick="updateDisplayCloseParenthesis()">)</button>
                     <button class="operator equal" onclick="updateDisplayeQual()">=</button>
                 </div>
             </div>

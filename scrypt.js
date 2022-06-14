@@ -7,7 +7,7 @@ input.innerText= "";
 output.innerText="0";
 
 //global varibles
-let lastInput = "number";
+let lastInput = "operator";
 
 //functions for number operations also round everything to 3 decimal points for inner calculations and trnasform strings to numers efectibly//
 
@@ -98,7 +98,7 @@ function calculate (expresion) {
         separated[0]=separated[0]*-1;
     }
     for(let i=1; i<separated.length;i++){
-        if  ((separated[i]=="-"&&!(typeof(separated[i-1])=="number"))&&typeof(separated[i+1]=="number")&&(separated[i+1]!="+")&&(separated[i+1]!="-")&&(separated[i+1]!="(")&&(separated[i+1]!=")")){
+        if  (separated[i]=="-"&&(!typeof(separated[i-1])=="number")&&typeof(separated[i+1]=="number")&&(separated[i+1]!="+")&&(separated[i+1]!="-")&&(separated[i+1]!="(")&&(separated[i+1]!=")")){
             separated.splice(i,1);
             separated[i]=separated[i]*-1;
         }
@@ -145,7 +145,7 @@ function calculate (expresion) {
     }
 
 // operates in the expresion
-    console.log(separated);
+
     if (!check){
         for(let i=0; i<separated.length;i++){
             if (separated[i]=="tan"){
@@ -218,7 +218,7 @@ function updateDisplayOperator (a){
     lastInput="operator";
 }
 
-//display function that calculates the input gives an output to the display and erase previus state
+//display functions that calculates the input in the screen and gives an output to the display and erase previus state
 
 function updateDisplayeQual(){ 
     result = calculate(input.innerText)
@@ -250,7 +250,32 @@ function updateDisplayClear(){
 
 function updateDisplaybkspace(){
     
-    input.innerText = input.innerText.slice(0,-2);
+    input.innerText = input.innerText.slice(0,-1);
+    
+}
+
+function updateDisplayLasResult(){
+    if (lastInput == "number"){
+        
+    } else {
+        input.innerText=input.innerText + output.innerText;
+        lastInput="number";
+    }
+    
+    
+}
+
+function updateDisplayOpenParenthesis(){
+    
+    input.innerText=input.innerText + " (";
+    lastInput="operator";
+    
+}
+
+function updateDisplayCloseParenthesis(){
+    
+    input.innerText=input.innerText + " )";
+    lastInput="operator";
     
 }
 
