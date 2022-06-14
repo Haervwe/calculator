@@ -1,6 +1,6 @@
 
 
-//functions for number operations also soud everything to 1 decimal point//
+//functions for number operations also round everything to 1 decimal point//
 
 function add (a,b){
     a = Math.floor(a*10)/10;
@@ -64,17 +64,19 @@ function calculate (expresion) {
     if (separated[0]=="-"&&typeof(separated[1]=="number")){
         separated.shift();
         separated[0]=separated[0]*-1;
-        console.log(separated[0]);
     }
     for(let i=1; i<separated.length;i++){
-        if  ((separated[i]=="-"&&!(typeof(separated[i-1])=="number"))&&typeof(separated[i+1]=="number")&&(separated[i+1]!="+")){
+        if  ((separated[i]=="-"&&!(typeof(separated[i-1])=="number"))&&typeof(separated[i+1]=="number")&&(separated[i+1]!="+")&&(separated[i+1]!="-")){
             console.log(separated);
             console.log(i);
+            
             separated.splice(i,1);
-            console.log(separated);
             separated[i]=separated[i]*-1;
-            console.log(separated[i]);
+            
+            
             console.log(separated);
+            console.log(separated[i]);
+            console.log(i);
         }
     }
 
@@ -155,11 +157,11 @@ function calculate (expresion) {
         
     }
     console.log(separated);
-    return separated;
-    
+    return separated;  
 }
 
-console.log(calculate("- 10 x ( - 10 + - 5 - 1 ) / s ( 4 ^ 2 )"));
+console.log(calculate("- 10 x ( ( ( s 5 ) x 5 ) - - 500 ) + ( - 10 + - 5 - 1 ) / s ( 4 ^ 2 )"));
+console.log(typeof(+));
 
 
 
