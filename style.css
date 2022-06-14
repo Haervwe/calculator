@@ -1,0 +1,39 @@
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+    flex:1 1 auto;
+    margin:  0px;
+    overflow: hidden;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+    justify-content: space-between;
+    align-content: center;
+    margin:  0px;
+    height: 100vh;
+    width: 100vw;
+    flex:1 1 auto;
+}
+
+.calculator, .title , .footer {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    flex-direction: row;
+}
+
+.keyboard {
+    display: flex;
+    flex-direction: row;
+}
+
+.numbers, .operator, .separators {
+        display: flex;
+        flex-direction: column;
+}

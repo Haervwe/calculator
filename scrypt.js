@@ -1,28 +1,28 @@
 
 
-//functions for number operations also round everything to 1 decimal point//
+//functions for number operations also round everything to 3 decimal points for inner calculations and trnasform strings to numers efectibly//
 
 function add (a,b){
-    a = Math.floor(a*10)/10;
-    b = Math.floor(b*10)/10;
+    a = Math.floor(a*1000)/1000;
+    b = Math.floor(b*1000)/1000;
     return +a + +b;
 }
 
 function substract (a,b){
-    a = Math.floor(a*10)/10;
-    b = Math.floor(b*10)/10;
+    a = Math.floor(a*1000)/1000;
+    b = Math.floor(b*1000)/1000;
     return +a - +b;
 }
 
 function multiply (a,b){
-    a = Math.floor(a*10)/10;
-    b = Math.floor(b*10)/10;
+    a = Math.floor(a*1000)/1000;
+    b = Math.floor(b*1000)/1000;
     return +a * +b;
 }
 
 function divide (a,b){
-    a = Math.floor(a*10)/10;
-    b = Math.floor(b*10)/10;
+    a = Math.floor(a*1000)/1000;
+    b = Math.floor(b*1000)/1000;
     if (b==0){
         return "error";
     }
@@ -30,17 +30,32 @@ function divide (a,b){
 }
 
 function power (a,b){
-    a = Math.floor(a*10)/10;
-    b = Math.floor(b*10)/10;
+    a = Math.floor(a*1000)/1000;
+    b = Math.floor(b*1000)/1000;
     return a**b;
 }
 
 function sqrt (a){
-    a = Math.floor(a*10)/10;
+    a = Math.floor(a*1000)/1000;
     if (a<0) {
         return "error";
     }
     return Math.sqrt(a);
+}
+
+function sin (a){
+    a = Math.floor(a*1000)/1000;
+    return Math.floor(Math.sin((a* Math.PI / 180)*1000)/1000);
+}
+
+function cos (a){
+    a = Math.floor(a*1000)/1000;
+    return Math.floor(Math.cos((a* Math.PI / 180)*1000)/1000);
+}
+
+function tang (a){
+    a = Math.floor(a*1000)/1000;
+    return Math.floor(Math.tan((a* Math.PI / 180)*1000)/1000);
 }
 
 
@@ -58,6 +73,8 @@ function calculate (expresion) {
     } else {
         separated = expresion;
     }
+
+    console.log(separated);
     
 //checks for "-" simbols in the array and its meaning (negative number or substraction)
 
@@ -66,17 +83,9 @@ function calculate (expresion) {
         separated[0]=separated[0]*-1;
     }
     for(let i=1; i<separated.length;i++){
-        if  ((separated[i]=="-"&&!(typeof(separated[i-1])=="number"))&&typeof(separated[i+1]=="number")&&(separated[i+1]!="+")&&(separated[i+1]!="-")){
-            console.log(separated);
-            console.log(i);
-            
+        if  ((separated[i]=="-"&&!(typeof(separated[i-1])=="number"))&&typeof(separated[i+1]=="number")&&(separated[i+1]!="+")&&(separated[i+1]!="-")&&(separated[i+1]!="(")&&(separated[i+1]!=")")){
             separated.splice(i,1);
             separated[i]=separated[i]*-1;
-            
-            
-            console.log(separated);
-            console.log(separated[i]);
-            console.log(i);
         }
     }
 
@@ -122,10 +131,25 @@ function calculate (expresion) {
     }
     
     // operates in the expresion
-
+    console.log(separated);
     if (!check){
         for(let i=0; i<separated.length;i++){
-            if (separated[i]=="s"){
+            if (separated[i]=="tan"){
+                separated.splice(i,2, tang(separated[i+1]));
+            }
+        }
+        for(let i=0; i<separated.length;i++){
+            if (separated[i]=="cos"){
+                separated.splice(i,2, cos(separated[i+1]));
+            }
+        }
+        for(let i=0; i<separated.length;i++){
+            if (separated[i]=="sin"){
+                separated.splice(i,2, sin(separated[i+1]));
+            }
+        }
+        for(let i=0; i<separated.length;i++){
+            if (separated[i]=="√"){
                 separated.splice(i,2, sqrt(separated[i+1]));
             }
         }
@@ -150,18 +174,23 @@ function calculate (expresion) {
             }
         }
         for(let i=0; i<separated.length;i++){
-            if (separated[i]=="-"){
+            if (separated[i]=="-"&&!(separated[i+1]=="-")){
                 separated.splice(i-1,3, substract(separated[i-1],separated[i+1]));
             }
         }
         
     }
+
+    //checks for "-" simbols in the array and its meaning (negative number or substraction)
+    // second time for negative expresions in parenthesis
+    
+
     console.log(separated);
     return separated;  
 }
 
-console.log(calculate("- 10 x ( ( ( s 5 ) x 5 ) - - 500 ) + ( - 10 + - 5 - 1 ) / s ( 4 ^ 2 )"));
-console.log(typeof(+));
+console.log(calculate("- 10.5 x ( ( ( √ 5 ) x cos 5 ) - - ( ( tan 200 ) + 500 ) ) + ( - 10 + - 5 - 1 ) / √ ( 4 ^ 2 )"));
+console.log(calculate( "tan 200"));
 
 
 
