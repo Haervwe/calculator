@@ -1,4 +1,13 @@
 
+//element links
+
+let input = document.querySelector("#input");
+let output = document.querySelector("#output");
+input.innerText= "";
+output.innerText="0";
+
+//global varibles
+let lastInput = "number";
 
 //functions for number operations also round everything to 3 decimal points for inner calculations and trnasform strings to numers efectibly//
 
@@ -66,7 +75,7 @@ function tang (a){
 
 function calculate (expresion) {
 
- //here it checks if the input needs conversion since its a recursive function it only does it once.
+ //checks if the input needs conversion since its a recursive function it only does it once.
     let separated = [];
     if (typeof(expresion)== "string"){
         separated = expresion.split(" ");
@@ -74,7 +83,13 @@ function calculate (expresion) {
         separated = expresion;
     }
 
-    console.log(separated);
+//check of empty "" elements of the array
+    for(let i=0; i<separated.length;i++){
+        if  ((separated[i]=='')){
+            separated.splice(i,1);
+            i--;
+        }
+    }
     
 //checks for "-" simbols in the array and its meaning (negative number or substraction)
 
@@ -89,7 +104,7 @@ function calculate (expresion) {
         }
     }
 
-//function that checks the array for parenthesis and use recursion to solve the inner parts of the expression given
+//hecks the array for parenthesis and use recursion to solve the inner parts of the expression given
 
     let counter = 0;
     let check = 0;
@@ -119,8 +134,7 @@ function calculate (expresion) {
         }
     }
 
-    // check if the expresion array is ready to do mathematichal operations
-
+// check if the expresion array is ready to do mathematichal operations
     for (let i = 0 ; i<separated.length;i++){
         if (separated[i]=="("){
             check = 1;
@@ -129,8 +143,8 @@ function calculate (expresion) {
             check = 0 ;
         }
     }
-    
-    // operates in the expresion
+
+// operates in the expresion
     console.log(separated);
     if (!check){
         for(let i=0; i<separated.length;i++){
@@ -180,18 +194,45 @@ function calculate (expresion) {
         }
         
     }
-
-    //checks for "-" simbols in the array and its meaning (negative number or substraction)
-    // second time for negative expresions in parenthesis
-    
-
-    console.log(separated);
     return separated;  
 }
 
-console.log(calculate("- 10.5 x ( ( ( √ 5 ) x cos 5 ) - - ( ( tan 200 ) + 500 ) ) + ( - 10 + - 5 - 1 ) / √ ( 4 ^ 2 )"));
-console.log(calculate( "tan 200"));
 
+//display function that adds the values to the display
+
+
+
+function updateDisplayNumber (a){
+    if (lastInput=="number"){
+        input.innerText=input.innerText + a;
+        lastInput="number";
+    }
+    if (lastInput=="operator"){
+        input.innerText=input.innerText + " " + a;
+        lastInput="number";
+    }
+    
+}
+function updateDisplayOperator (a){ 
+    input.innerText=input.innerText + " " + a;
+    lastInput="operator";
+}
+
+//display function that calculates the input gives an output to the display and erase previus state
+
+function updateDisplayeQual(){ 
+    result = calculate(input.innerText)
+    if (result.length == 1){
+        output.innerText = result[0];
+        input.innerText =  "";
+        lastInput="number";
+    }
+    
+}
+
+
+
+console.log(calculate("               10 + 1         "));
 
 
 

@@ -21,7 +21,21 @@ body {
     flex:1 1 auto;
 }
 
-.calculator, .title , .footer {
+.calculator {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    flex-direction: column;
+}
+
+.displays {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    flex: 1 1 auto;
+}
+.title , .footer {
     display: flex;
     justify-content: center;
     align-content: center;
@@ -30,10 +44,15 @@ body {
 
 .keyboard {
     display: flex;
+    justify-content: center;
+    align-content: center;
     flex-direction: row;
 }
+
+
 
 .numbers, .operator, .separators {
         display: flex;
         flex-direction: column;
 }
+

@@ -15,51 +15,51 @@
         <div class="calculator">
             <div class="displays">
                 <div class="input">
-                    <p></p>
+                    <p id="input">a</p>
                 </div>
                 <div class="result">
-                    <p></p>
+                    <p id="output"></p>
                 </div>
             </div>
             <div class="keyboard">
                 <div class="numbers">
                     <div class="row first">
-                        <button class="number one">1</button>
-                        <button class="number two">2</button>
-                        <button class="number three">3</button>
+                        <button class="number one" onclick="updateDisplayNumber (`1`)">1</button>
+                        <button class="number two" onclick="updateDisplayNumber (`2`)">2</button>
+                        <button class="number three" onclick="updateDisplayNumber (`3`)">3</button>
                     </div>
                     <div class="row second">
-                        <button class="number four">4</button>
-                        <button class="number five">5</button>
-                        <button class="number six">6</button>
+                        <button class="number four" onclick="updateDisplayNumber (`4`)">4</button>
+                        <button class="number five" onclick="updateDisplayNumber (`5`)">5</button>
+                        <button class="number six" onclick="updateDisplayNumber (`6`)">6</button>
                     </div>
                     <div class="row third">
-                        <button class="number seven">7</button>
-                        <button class="number eight">8</button>
-                        <button class="number nine">9</button>
+                        <button class="number seven" onclick="updateDisplayNumber (`7`)">7</button>
+                        <button class="number eight" onclick="updateDisplayNumber (`8`)">8</button>
+                        <button class="number nine" onclick="updateDisplayNumber (`9`)">9</button>
                     </div>
                     <div class="row fourth">
-                        <button class="number dot">.</button>
-                        <button class="number zero">0</button>
+                        <button class="number dot" onclick="updateDisplayNumber (`.`)">.</button>
+                        <button class="number zero"onclick="updateDisplayNumber (`0`)">0</button>
                         <button class="number res">R</button>
                     </div>
                 </div>
                 <div class="operators">
-                    <button class="operator plus">+</button>
-                    <button class="operator minus">-</button>
-                    <button class="operator multiply">x</button>
-                    <button class="operator divide">/</button>
-                    <button class="operator power">^</button>
-                    <button class="operator sqrt">√</button>
+                    <button class="operator plus" onclick="updateDisplayOperator (` + `)">+</button>
+                    <button class="operator minus" onclick="updateDisplayOperator (` - `)">-</button>
+                    <button class="operator multiply" onclick="updateDisplayOperator (` x `)">x</button>
+                    <button class="operator divide" onclick="updateDisplayOperator (` / `)">/</button>
+                    <button class="operator power" onclick="updateDisplayOperator (` ^ `)">^</button>
+                    <button class="operator sqrt" onclick="updateDisplayOperator (` √ `)">√</button>
                     
                 </div>
                 <div class="separators">
-                    <button class="operator sin">Sin</button>
-                    <button class="operator cos">Cos</button>
-                    <button class="operator tan">Tan</button>
-                    <button class="operator openpare">(</button>
+                    <button class="operator sin" onclick="updateDisplayOperator (` sin `)">Sin</button>
+                    <button class="operator cos" onclick="updateDisplayOperator (` cos `)">Cos</button>
+                    <button class="operator tan" onclick="updateDisplayOperator (` tan `)">Tan</button>
+                    <button class="operator openpare" >(</button>
                     <button class="operator closepare">)</button>
-                    <button class="operator equal">=</button>
+                    <button class="operator equal" onclick="updateDisplayeQual()">=</button>
                 </div>
             </div>
         </div>
