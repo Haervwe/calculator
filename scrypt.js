@@ -3,7 +3,7 @@
 
 let input = document.querySelector("#input");
 let output = document.querySelector("#output");
-input.innerText= "";
+input.innerText= " ";
 output.innerText="0";
 
 //global varibles
