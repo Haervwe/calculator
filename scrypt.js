@@ -130,7 +130,7 @@ function calculate (expresion) {
                     const toCalc = separated.splice(init,fin);
                     toCalc.shift();
                     temp.splice(init,1,calculate(toCalc));
-                    temp[init]=temp[init][0]
+                    temp[init]=temp[init][0];
                     separated  = temp;
                     break;
                     
@@ -242,7 +242,7 @@ function updateDisplayeQual(){
     } else {
         output.innerText = "Syntax Error!";
         input.innerText =  "";
-        lastInput="number"
+        lastInput="number";
     }
     
 }
