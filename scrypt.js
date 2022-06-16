@@ -55,19 +55,21 @@ function sqrt (a){
 function sin (a){
     a = Math.floor(a*1000)/1000;
     console.log(a);
-    return Math.floor(Math.sin((a))*1000/1000);
+    return Math.floor(Math.sin(a * Math.PI / 180)*1000)/1000;
 }
 
 function cos (a){
     a = Math.floor(a*1000)/1000;
     console.log(a);
-    return Math.floor(Math.cos((a))*1000/1000);
+    return Math.floor(Math.cos(a * Math.PI / 180)*1000)/1000;
 }
 
 function tang (a){
     a = Math.floor(a*1000)/1000;
     console.log(a);
-    return Math.floor(Math.tan((a))*1000/1000);
+    a = Math.floor(Math.tan(a * Math.PI / 180)*1000)/1000;
+    console.log(a);
+    return a;
 }
 
 
